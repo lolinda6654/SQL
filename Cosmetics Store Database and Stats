@@ -1,0 +1,22 @@
+CREATE TABLE cosmetics (id INTEGER PRIMARY KEY, cosmetics TEXT, quantity INTEGER, Price INTEGER, weight INTEGER); 
+
+INSERT INTO cosmetics values (1, "Blush", 10, 19.99, "3oz");
+INSERT INTO cosmetics values (2, "Cream", 15, 29.99, "8oz");
+INSERT INTO cosmetics values (3, "Sun Screen", 15, 15.99, "10oz");
+INSERT INTO cosmetics values (4, "Eye Shadow", 10, 16.99, "5oz");
+INSERT INTO cosmetics values (5, "Blush Highlighter", 18, 19.99, "3oz");
+INSERT INTO cosmetics values (6, "Eye Liner", 20, 9.99, "3oz");
+INSERT INTO cosmetics values (7, "Makeup Wipes", 10, 5.99, "10oz");
+INSERT INTO cosmetics values (8, "Serum", 15, 39.99, "5oz");
+INSERT INTO cosmetics values (9, "Makeup Brush", 18, 9.99, "8oz");
+INSERT INTO cosmetics values (10, "Lip Gloss", 16, 9.99, "1oz");
+INSERT INTO cosmetics values (11, "Lip Stick", 10, 9.99, "1oz");
+INSERT INTO cosmetics values (12, "Eye Brow Pencil", 10, 15.99, "1oz");
+INSERT INTO cosmetics values (13, "Powder", 10, 19.99, "3oz");
+INSERT INTO cosmetics values (14, "Setting Spray", 10, 14.99, "5oz");
+INSERT INTO cosmetics values (15, "Moisturizer", 10, 34.99, "5oz");
+
+SELECT * FROM cosmetics
+ORDER BY price; 
+
+SELECT SUM(quantity) FROM cosmetics
