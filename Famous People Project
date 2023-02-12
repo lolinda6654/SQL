@@ -1,0 +1,71 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE singer(id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    last_name TEXT, 
+    first_name TEXT,
+    gender TEXT);
+
+INSERT INTO singer VALUES (1, "Lopez", "Jennifer", "female");
+INSERT INTO SINGER VALUES (2, "Brown", "Chris", "male");
+INSERT INTO singer VALUES (3, "Levine", "Adam", "male");
+INSERT INTO singer VALUES (4, "Swift", "Taylor", "female");
+INSERT INTO singer VALUES (5, "Knowles", "Beyonce", "female");
+INSERT INTO singer VALUES (6, "Fenty", "Rhianna", "female");
+INSERT INTO singer VALUES (7, "Lavigne", "Avril", "female");
+INSERT INTO singer VALUES (8, "Brewer", "Howie", "male");
+INSERT INTO singer VALUES (9, "Graham", "Drake", "male");
+INSERT INTO singer VALUES (10, "Timberlake", "Justin", "male");
+INSERT INTO singer VALUES (11, "Underwood", "Carrie", "female");
+INSERT INTO singer VALUES (12, "Jackson", "Michael", "male");
+INSERT INTO singer VALUES (13, "Clarkson", "Kelly", "female");
+INSERT INTO singer VALUES (14, "Jackson", "Janet", "female");
+INSERT INTO singer VALUES (15, "Jonas", "Nick", "male");
+
+CREATE TABLE birthplace(id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    city TEXT, 
+    state TEXT);
+
+INSERT INTO birthplace VALUES (1, "Bronx", "New York");
+INSERT INTO birthplace VALUES (2, "Tappahannock", "Virginia");
+INSERT INTO birthplace VALUES (3, "Los Angeles", "California");
+INSERT INTO birthplace VALUES (4, "West Reading", "Pennsylvania");
+INSERt INTO birthplace VALUES (5, "Houston", "Texas");
+INSERT INTO birthplace VALUES (6, "Saint Michael", "Barbodos");
+INSERT INTO birthplace VALUES (7, "Belleville", "Canada");
+INSERT INTO birthplace VALUES (8, "Bangor", "Maine");
+INSERT INTO birthplace VALUES (9, "Toronto", "Cananda");
+INSERT INTO birthplace VALUES (10, "Memphis", "Tennessee");
+INSERT INTO birthplace VALUES (11, "Muskogee", "Oklahoma");
+INSERT INTO birthplace VALUES (12, "Gary", "Indiana");
+INSERT INTO birthplace VALUES (13, "Forth Worth", "Texas");
+INSERT INTO birthplace VALUES (14, "Gary", "Indiana");
+INSERT INTO birthplace VALUES (15, "Dallas", "Texas");
+    
+/*INNER JOIN*/
+SELECT s.id, s.last_name, s.first_name, b.city, b.state
+    FROM singer s
+    JOIN birthplace b
+    ON b.id = s.id;
+    
+/*ORDER BY ALPHABET*/
+SELECT s.last_name, s.first_name, b.city, b.state
+    FROM singer s
+    JOIN birthplace b
+    ON b.id = s.id
+    ORDER BY last_name;
+
+/*Female Artist*/
+SELECT s.last_name, s.first_name, s.gender
+    FROM singer s
+    JOIN birthplace b
+    ON b.id = s.id
+    WHERE s.gender="female"
+    ORDER BY last_name;
+    
+/*Male Artist*/
+SELECT s.last_name, s.first_name, s.gender
+    FROM singer s
+    JOIN birthplace b
+    ON b.id = s.id
+    WHERE s.gender="male"
+    ORDER BY last_name;
