@@ -1,0 +1,54 @@
+/*How many orders were placed in the month of January*/ 
+SELECT COUNT(orderID)
+FROM BIT_DB.JanSales
+WHERE length(orderID)=6
+AND orderid<>'OrderID';
+
+/*How many of those orders were for an Flatscreen TV?*/
+SELECT COUNT(orderID)
+FROM BIT_DB.JanSales
+WHERE Product='Flatscreen TV'
+AND length(orderID)=6
+AND orderid<> 'OrderID';
+
+/*Select the customer account number of all the orders that were placed in February*/
+SELECT customers.order_id, customers.acctnum
+FROM BIT_DB.customers
+INNER JOIN BIT_DB.FebSales
+ON customers.order_id = FebSales.orderID
+WHERE length(orderid)=6
+AND orderid <>'OrderID';
+
+/*Which product was the cheapest one sold in January, and what was the price?*/
+SELECT product, min(price)
+FROM BIT_DB.JanSales
+GROUP By product, price
+ORDER BY price ASC Limit 1;
+
+/*What is the total revenue for each product sold in January?*/
+SELECT SUM(quantity)*price as Revenue
+,product
+FROM BIT_DB.JanSales
+GROUP BY product;
+
+/*How many customers ordered more than 2 products at a time, and what was the average amount
+spent for those customers?*/
+SELECT 
+count(distinct cust.acctnum),
+avg(quantity*price)
+FROM BIT_DB.FebSales FEB
+LEFT JOIN BIT_DB.customers CUST
+ON FEB.orderid=CUST.order_id
+WHERE FEB.Quantity>2
+AND length(orderid)=6
+AND orderid <> 'Order ID';
+
+/*Which products were sold in February at 847 10th St, San Francisco, CA 94016, 
+how many of each were sold, and what was the total revenue?*/
+SELECT 
+sum(Quantity),
+product,
+sum(quantity)*price as revenue
+FROM BIT_DB.FebSales
+WHERE location = '847 10th St, San Francisco, CA 94016'
+GROUP BY product;
