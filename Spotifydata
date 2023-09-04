@@ -18,7 +18,8 @@ tempo decimal(6,3) NOT NULL,
 duration_ms integer NOT NULL,
 time_signature integer NOT NULL );
 
-SELECT * 
+SELECT 
+    * 
 FROM 
     BIT_DB.Spotifydata;
 
@@ -69,7 +70,8 @@ LIMIT 1;
 /*Query the average energy in spotifydata*/
 SELECT
     AVG(energy)
-FROM BIT_DB.Spotifydata;
+FROM 
+    BIT_DB.Spotifydata;
 
 /*Looking at the spotifydata, identify the above and below average energy*/
 SELECT track_name, energy,
@@ -79,3 +81,19 @@ SELECT track_name, energy,
     WHEN energy < 0.64636 THEN 'Below Average'
 END) AS AverageRate
 FROM BIT_DB.Spotifydata;
+
+/*What is the average popularity*/
+SELECT
+    AVG(popularity)
+FROM 
+    BIT_DB.Spotifydata;
+
+/*Identify the above, below and average popularity*/
+SELECT track_name, popularity,
+(CASE 
+    WHEN popularity > 86.8 THEN 'Above Average popularity'
+    WHEN popularity = 86.8 THEN 'Average popularity'
+    WHEN popularity < 86.8 THEN 'Below Average popularity'
+END) AS AverageRate
+FROM BIT_DB.Spotifydata;
+
